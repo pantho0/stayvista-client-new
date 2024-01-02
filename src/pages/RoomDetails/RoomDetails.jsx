@@ -5,6 +5,8 @@ import Loader from "../../components/Shared/Loader";
 import { Helmet } from "react-helmet-async";
 import Header from "../../components/RoomDetails/Header";
 import RoomInfo from "../../components/RoomDetails/RoomInfo";
+import RoomReservation from "./RoomReservation";
+
 
 const RoomDetails = () => {
   const { id } = useParams();
@@ -32,7 +34,9 @@ const RoomDetails = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-7 md:gap-10 mt-20">
           <RoomInfo rooms={rooms} />
-          <h1 className="order-first md:col-span-3 mb-10 md:order-last">Calender</h1>
+          <div className="order-first md:col-span-3 mb-10 md:order-last">
+            <RoomReservation/>
+          </div>
         </div>
       </div>
     </Container>
