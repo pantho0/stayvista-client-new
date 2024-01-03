@@ -14,7 +14,7 @@ const RoomDetails = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch("/rooms.json")
+    fetch("https://raw.githubusercontent.com/shakilahmedatik/stay-vista-resources/main/data/rooms.json")
       .then((res) => res.json())
       .then((data) => {
         const singleRoom = data.find((room) => room._id === id);
@@ -35,7 +35,7 @@ const RoomDetails = () => {
         <div className="grid grid-cols-1 md:grid-cols-7 md:gap-10 mt-20">
           <RoomInfo rooms={rooms} />
           <div className="order-first md:col-span-3 mb-10 md:order-last">
-            <RoomReservation/>
+            <RoomReservation rooms={rooms}/>
           </div>
         </div>
       </div>
