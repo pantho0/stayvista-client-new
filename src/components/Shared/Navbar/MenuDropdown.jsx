@@ -55,7 +55,7 @@ const MenuDropdown = () => {
             </Link>
             <div
               onClick={logOut}
-              to='/signup'
+              to='/signu'
               className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'
             >
               Logout
