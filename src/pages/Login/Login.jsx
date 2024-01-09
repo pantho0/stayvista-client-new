@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const toLoad = location?.state?.from?.pathname || '/'
-  console.log(location);
+  
   // form submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const Login = () => {
       // get token
       await getToken(result?.user?.email);
       toast.success("Login Successful");
-      navigate(toLoad);
+      navigate(toLoad, {replace:true});
     } catch (err) {
       toast.error(err?.message);
       console.log(err);
@@ -42,7 +42,7 @@ const Login = () => {
       // get token
       await getToken(result?.user?.email);
       toast.success("Login Successful");
-      navigate(toLoad);
+      navigate(toLoad, {replace:true});
     } catch (err) {
       toast.error(err?.message);
       console.log(err);
