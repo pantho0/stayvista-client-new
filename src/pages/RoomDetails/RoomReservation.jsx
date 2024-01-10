@@ -1,21 +1,23 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import Button from "../../components/Button/Button";
 import Calender from "./Calender";
+import { formatDistance } from "date-fns";
 
 
 
 
 const RoomReservation = ({rooms}) => {
-    // const [value, setValue] = useState({
-    //     startDate : new Date(rooms?.from),
-    //     endDate : new Date(rooms?.to),
-    //     key: 'selection'
-    // })
-    // const totalDays =parseInt(
-    //     formatDistance(new Date(rooms?.to), new Date(rooms?.from)).split(' ')[0]
-    // );
+    const [value, setValue] = useState({
+        startDate : new Date(rooms?.from),
+        endDate : new Date(rooms?.to),
+        key: 'selection'
+    })
+    const totalDays =parseInt(
+        formatDistance(new Date(rooms?.to), new Date(rooms?.from)).split(' ')[0]
+    );
     // console.log(totalDays);
-    //     const totalPrice = totalDays * rooms?.price;
+        const totalPrice = totalDays * rooms?.price;
     //     console.log(totalPrice);
     return (
         <div className="rounded-xl border-[1px] border-neutral-200 overflow-hidden bg-white">
@@ -24,7 +26,7 @@ const RoomReservation = ({rooms}) => {
                 <div className="font-light text-neutral-600">/night</div>
             </div>
             <hr />
-            <Calender/>
+            <Calender value={value}/>
             <hr />
             <div className="p-4">
                 <Button label={'Reserve'}/>
@@ -35,7 +37,7 @@ const RoomReservation = ({rooms}) => {
                     Total
                 </div>
                 <div>
-                    ${rooms.price}
+                    ${totalPrice}
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ import Container from "../Shared/Container";
 import { useSearchParams } from "react-router-dom";
 import Heading from "../Shared/Heading";
 import Loader from "../Shared/Loader";
+import { getAllRooms } from "../../api/rooms";
 
 const Rooms = () => {
   const [rooms, setRooms] = useState([]);
@@ -12,8 +13,7 @@ const Rooms = () => {
   const category = params.get("category");
   useEffect(() => {
     setLoading(true)
-    fetch("https://raw.githubusercontent.com/shakilahmedatik/stay-vista-resources/main/data/rooms.json")
-      .then((res) => res.json())
+    getAllRooms()
       .then((data) => {
         if (category) {
           const filtered = data.filter((room) => room.category === category);
